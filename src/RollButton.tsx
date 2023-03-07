@@ -1,7 +1,7 @@
 import React from "react";
 
 interface RollButtonProps {
-    clickHandler(event: React.MouseEvent<HTMLButtonElement>): void;    
+    clickHandler(event: React.MouseEvent<HTMLButtonElement>): void;
 }
 
 
