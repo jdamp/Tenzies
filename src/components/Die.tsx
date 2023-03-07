@@ -1,15 +1,13 @@
 import React from "react";
 
 interface DieProps {
-    initValue: number
+    value: number
 }
 
 export default function Die(props: DieProps) {
-    const [value, setValue] = React.useState(props.initValue);
-    
     return(
         <div className="dieFace">
-            <p className="dieNumber">{value}</p>
+            <p className="dieNumber">{props.value}</p>
         </div>
     );
 }
