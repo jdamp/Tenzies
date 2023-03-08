@@ -5,7 +5,6 @@ interface RollButtonProps {
     buttonText: string;
 }
 
-
 export default function RollButton(props: RollButtonProps) {
     return (
         <button className="rollButton" onClick={props.clickHandler}>
