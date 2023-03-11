@@ -27,30 +27,39 @@ function allNewDice(): Array<DieObject> {
     });
 }
 
+function toggleRolling(die: DieObject) {
+    if(!die.isRolling) {
+        die.isRolling = true;
+        die.value = getRandomDieValue()
+    }
+    else {
+        die.isRolling = false;
+    }
+    return die;
+}
+
+
 export default function App() {
     const [dice, setDice] = React.useState(allNewDice());
-
     const [tenzies, setTenzies] = React.useState(false);
 
-    const [rolling, setRolling] = React.useState(false);
 
     function rollDice(): void {
-        console.log("Rolling: ", rolling);
-        setRolling(true);
-        console.log("Rolling: ", rolling);
         const newDice = dice.map((die) =>
             die.isHeld
                 ? die
-                : {
-                      ...die,
-                      isRolling: rolling,
-                      value: getRandomDieValue(),
-                  }
+                : toggleRolling(die)
         );
-        console.log(newDice);
         setDice(newDice);
-        setTimeout(() => setRolling(false), 1000);
-        console.log("Rolling: ", rolling);
+
+        setTimeout(() => {
+            const newDice = dice.map((die) =>
+            die.isHeld
+                ? die
+                : toggleRolling(die)
+        );
+        setDice(newDice);
+        }, 1000);
     }
 
     function newGame(): void {
